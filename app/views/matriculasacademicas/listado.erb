@@ -1,0 +1,20 @@
+<table>
+
+<%= "Cedula: "%><%= current_user.persona.pers_cedula %><br/>
+<%= "Nombre: "%><%= current_user.persona.pers_nombre%><br/>
+<%= "Apellido: "%><%= current_user.persona.pers_apellido%><br/>
+<%= "Direccion: "%><%= current_user.persona.pers_direccion%><br/>
+<%= "Convencional: "%><%= current_user.persona.pers_telefono1%><br/>
+<%= "Celular: "%><%= current_user.persona.pers_telefono2%><br/>
+<%= "E-mail: "%><%= current_user.persona.pers_email%>
+<%#= current_user.persona.pers_%>
+<%@matriculas.each do |m|%>
+<br/>
+<tr>  
+  <td><font color ="#0900FF">Nivel:</font> <%= m.curso.nivel.nivel_numero %></td>
+  <td><font color ="#0900FF"><%= "Paralelo: "%></font><%= m.curso.cur_paralelo %></td>
+  <td><font color ="#0900FF"><%= "Ciclo: "%></font><%= m.curso.nivel.nivele.tip_niv_nombre %></td>
+  <td><font color ="#0900FF"><%= "Seccion: "%></font><%= m.curso.seccion.secc_nombre %></td>
+  <td><font color ="#0900FF"><%= "Periodo: "%></font><%= m.curso.periodo.period_fech_ini %> <%= " - "%><%= m.curso.periodo.period_fech_fin %></td>
+<%end%>
+</table>

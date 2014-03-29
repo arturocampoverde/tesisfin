@@ -1,0 +1,43 @@
+<html>
+<head>  
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+<script language="JavaScript" type="text/javascript" src="ajax.js"></script>
+</head>
+<body>  
+
+<%=form_for @nivel , :url => {:action=>"create"} do |f| %>
+<div id="login-form4">
+
+<br/><br/>
+<h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">CREAR NIVELES ACADÉMICOS</font></b></h3>
+<fieldset style = "width: 200px; margin: 10px 50px 65px 400px;">
+
+<div align="center">
+<p>
+  <div align="center"><%=f.label "NIVEL"%></div>
+  <div align="center"><%=f.text_field :nivel_numero %></div>
+</p>
+ 
+<p>
+  <div align="center"><%=f.label "DESCRIPCION"%></div>
+  <div align="center"><%=f.text_field :nivel_descrip %></div>
+</p>
+
+<table>
+ <% @nivele.each do |n| %>
+<tr>
+  
+  <td><div align="center"><%= f.radio_button :nivele_id, n.id%> <%=  n.tip_niv_nombre %></td></div>
+</tr>
+
+ <% end %>
+</table>
+<br/>
+<%=  f.submit "GUARDAR" %>
+  </fieldset>
+</div>
+
+<%end%>
+</div>
+</body>
+</html>

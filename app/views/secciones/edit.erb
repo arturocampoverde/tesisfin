@@ -1,0 +1,27 @@
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+<br/><br/><br/>
+
+<br/><br/>
+<div align="center">
+<%=form_for @seccions do |a| %>
+ <div id="login-form4">
+    <h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">EDITE SECCIÓN ACADÉMICA</font></b></h3>
+<fieldset style = "width: 200px; margin: 10px 50px 65px 400px;">
+<p>
+  <div align="center"><%=a.label "NOMBRE"%></div>
+  <div align="center"><%=a.text_field :secc_nombre %></div>
+</p>
+
+
+<%#*<p>%>
+  <%#*<div align="center"><%=a.label "ESTADO"%>
+  <%#*<div align="center"><%=a.text_field :secc_estado %>
+<%#*</p>%>
+
+<%=  a.submit "GUARDAR" %>
+  </fieldset>
+</div>
+<%end%>
+
+</div>

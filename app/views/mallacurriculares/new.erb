@@ -1,0 +1,53 @@
+
+<html>
+<head>  
+<script language="JavaScript" type="text/javascript" src="ajax.js"></script> 
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+</head>
+<body>  
+
+<%=form_for @malla , :url => {:action=>"create"} do |f| %>
+ 
+  <div id="login-form4">
+<fieldset style = "width: 700px; height:410px; margin: 1px 50px 65px 310px;">
+<h3 style = "width: 300px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">ESCOJA TIPO DE MALLA</font></b></h3>
+<table align="center"> 
+  <% @clase.each do |clase| %> 
+<td><%= radio_button_tag :clase, clase.id %><%= clase.tip_mall_descrip %></td>
+<% end %>
+</table>
+<p>
+
+
+<h3 style = "width: 300px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">INGRESE FECHA DE CREACIÓN DE MALLA</font></b></h3>
+<tr>
+<div align="center"><p><%= "Fecha inicio: " %><%= text_field_tag :malla_fech_inic, nil%> <%= "Fecha de fin: " %><%= text_field_tag :malla_fech_fin, nil%></p></div>
+</table>
+ 
+<h3 style = "width: 200px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">ESCOJA EL NIVEL</font></b></h3>
+<table align="center"> 
+<% @nivel.each do |niv| %>
+  
+<td> <%= radio_button_tag :nivel, niv.id %> <%= niv.nivel_numero %>-<%=  niv.nivele.tip_niv_nombre %></td>
+
+<%end%>
+
+</table>
+<p>
+<h3 style = "width: 200px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">ESCOJA LA ASIGNATURA</font></b></h3>
+  <table width="600" border="3" align="left" >
+   <td> <% @asignatura.each do |asignatura| %>
+      
+        
+         <%=check_box_tag "asignaturas[]", asignatura.id%><%=asignatura.asig_nombre%>
+      
+    <%end%>
+   </td>  
+  </table>
+ <%= submit_tag "GUARDAR" %>
+  </fieldset>
+    </div>
+<%end%>
+
+</body>
+</html>

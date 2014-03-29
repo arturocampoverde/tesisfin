@@ -1,0 +1,105 @@
+<html>
+<head>
+<script>
+      $(document).ready(function() {
+      $('#cartilla').hide()
+      $('#periodo_select_secre').change(function() {
+      
+        $.ajax({
+        url: "<%=update_niveles_secre_path%>",
+        data: {
+          periodo_id : $('#periodo_select_secre').val()
+        },
+        dataType: "script"
+        });
+      });
+
+      $('#nivel_select_secre').change(function() {
+        $.ajax({
+        url: "<%= update_cursos_secre_path%>",
+        data: {
+          periodo_id : $('#periodo_select_secre').val(),
+          nivel_id : $('#nivel_select_secre').val()
+        },
+        dataType: "script"
+        });
+      });
+
+       $('#curso_select_secre').change(function() {
+        $.ajax({
+        url: "<%= update_homo_path%>",
+        data: {
+          periodo_id : $('#periodo_select_secre').val(),
+          nivel_id : $('#nivel_select_secre').val(),
+          persona_id: $('#hist_pers_id').val(),
+          curso_id: $('#curso_select_secre').val()
+        },
+        dataType: "script"
+        });
+      });
+
+    });
+</script>
+  </head>
+<center><h1>HISTORIAL CURRICULAR</h1></center>
+<body>
+<%#@matricula_periodo_anterior.each do |mpa| %>
+ <center>ALUMNO: <%= @persona.pers_nombre %> <%= @persona.pers_apellido %></center>
+  <%@matriculas.each do |f| %>
+ <center> <%= f.curso.nivel.nivel_numero %> Nivel "<%= f.curso.cur_paralelo %>"</center>
+ <center> Periodo <%= f.curso.periodo.period_fech_ini %> - <%= f.curso.periodo.period_fech_fin %></center>
+ <table border="3" align="center">
+
+      <tr>
+      <td align="center" colspan="9" height="10" bgcolor="#E2E2E2"><font color ="#4B4A55">NOTAS ACADEMICAS PERTENECIENTES AL ALUMNO</font></td>
+      </tr>
+
+    <tr>
+      <td align="center"><font color="#2100F7">ASIGNATURAS</td>
+      <td align="center"><font color="#2100F7">Deberes</td>
+      <td align="center"><font color="#2100F7">Lecciones</td>
+      <td align="center"><font color="#2100F7">Trabajos</td>
+      <td align="center"><font color="#2100F7">Aportes</td>
+      <td align="center"><font color="#2100F7">Examenes</td>
+      <td align="center"><font color="#2100F7">Total</td>
+      <td align="center"><font color="#2100F7">Promedio<font/></td>
+      <td align="center"><font color="#2100F7">Conducta<font/></td>
+      
+    </tr>
+
+    <%f.calificaciones.each do |n| %>
+
+    <tr>
+      <td align="center"><%= n.asignatura.asig_nombre %></td>
+      <td align="center"><%= n.calif_tarea %></td>
+      <td align="center"><%= n.calif_act_indv %></td>
+      <td align="center"><%= n.calif_act_grup %></td>
+      <td align="center"><%= n.calif_leccion %></td>
+      <td align="center"><%= n.calif_examen %></td>
+      <td align="center"><%= n.calif_total %></td>
+      <td align="center"><%= n.calif_promedio %></td>
+      <td align="center"><%= n.calif_conducta %></td>
+    </tr>
+    <%end%>
+
+    </table>
+ 
+
+    <center><%= link_to "Editar Calificaciones", edit_historial_path(:matricula_id=>f.id, :persona_id=>@persona.id) %></center><br/>
+  <%end%>
+  
+  <%= form_tag homologacion_notas_path, :method => 'get' do%>
+    PERIODO LECTIVO <%= collection_select(nil, :periodo_id, @periodos, :id, :period_fech_ini, {:prompt => "Seleccione un Periodo"}, {:id => 'periodo_select_secre'}) %><br/>
+    NIVEL <%= collection_select(nil, :nivel_id, @niveles, :id, :nivel_numero, {:prompt => "Seleccione un Nivel"}, {:id => 'nivel_select_secre'}) %><br/>
+    PARALELO <%= collection_select(nil, :curso_id, @cursos, :id, :cur_paralelo, {:prompt => "Seleccione un Paralelo"}, {:id => 'curso_select_secre'}) %><br/>
+    <%= hidden_field_tag :persona_id, @persona.id, :id=>"hist_pers_id"%>
+    <br/>
+    <div id="cartilla">
+      
+    </div>
+
+  <%end%>
+   <br/>
+   <center><%= link_to "Matricular Estudiante por Homologación", matricula_secre_path(:persona_id=>@persona.id)%></center>
+</body>
+ </html>

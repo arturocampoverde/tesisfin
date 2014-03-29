@@ -1,0 +1,6 @@
+var parentElement = document.getElementById('cartilla');
+while ( parentElement.firstChild ) parentElement.removeChild( parentElement.firstChild);
+
+$('#cartilla').show();
+//$('#cartilla').html("<%#= j render(:partial => 'mensaje', :locals => {:f => @asignaturas})%>");
+$('#cartilla').html('<%= escape_javascript(render :partial =>'mensaje')%>');

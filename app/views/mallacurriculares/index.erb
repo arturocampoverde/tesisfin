@@ -1,0 +1,43 @@
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+ <div id="login-form4"> 
+<br/><br/>
+<center><p><h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">MALLAS CURRICULARES</font></b></h3></p></center>
+
+
+<table border="3" width="700" align="justify" cellspacing="5" background="/assets/imagesssss.jpg">
+  <thead>
+    <tr>
+      <td><center><font color= "#E40F00">NIVEL</font></center></td>
+      <td><center><font color= "#E40F00">ASIGNATURAS</font></center></td>
+      <td align="center"><center><font color= "#E40F00">MALLA</font></center></td>       
+    </tr>
+  </thead>
+  <% @mallas.each do |malla| %>
+    <tr>
+    <%#= malla.mult.collect { |detail| "NIVEL:#{detail.nivel.nivel_numero} ASIGNATURA:#{detail.asignatura.asig_nombre}" }.join("**** ") %></font></td>
+<%malla.nivels.uniq.each do |n|%>
+      <td><center><%= n.nivel_numero %></center></td>                         
+       
+      <%#*<td><%n.mults.uniq.each do |a|%>
+        
+      <td><%n.mults.uniq.each do |a|%>
+
+          <%if a.malla_id == malla.id%>
+            <font color= "#3300FF"><%= a.asignatura.asig_nombre%> -- </font>
+          <%end%>
+          
+          <%end%>
+      </td>
+
+      <td><font color= "#008E2D"><center><%= malla.clase.tip_mall_descrip %></center></font></td>
+      
+
+      <td align="center"><font color ="#3300FF">  <%= link_to "EDITAR", edit_mallacurriculare_path(:id => n.id)%> </font> </td>
+      <td align="center"><%= link_to "ELIMINAR", malla_eliminar_path(:id => n.id, :malla_id => malla.id), :confirm => 'ESTAS SEGURISIMO ??'%></td>
+    </tr>
+   <%end%>
+  <% end %>
+</table>
+      </div>
+</html>

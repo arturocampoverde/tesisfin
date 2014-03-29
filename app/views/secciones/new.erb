@@ -1,0 +1,40 @@
+<html>
+<head>  
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+<script language="JavaScript" type="text/javascript" src="ajax.js"></script>
+</head>
+<body>  
+
+
+      
+
+  
+  
+<%=form_for @seccion , :url => {:action=>"create"} do |c| %>
+
+<div id="login-form4">
+
+<br/><br/>
+<h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">CREAR SECCIONES ACADÉMICAS</font></b></h3>
+<fieldset style = "width: 200px; margin: 10px 50px 65px 400px;">
+<div align="center">
+<div onkeypress="return isNumberKey(event)">   
+<p>
+  <div align="center"><%=c.label "NOMBRE"%></div>
+  <div align="center"><%=c.text_field :secc_nombre %></div>
+</p>
+</div>
+
+<p>
+  <%#=c.label "ESTADO"%>
+  <%#=c.text_field :secc_estado %>
+</p>
+
+<%=c.submit "GUARDAR" %>
+  </fieldset>
+</div>
+<%end%>
+
+</div>
+</body>
+</html>

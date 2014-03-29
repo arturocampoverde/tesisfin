@@ -1,0 +1,37 @@
+<html>
+<head>  
+<script language="JavaScript" type="text/javascript" src="ajax.js"></script> 
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+</head>
+<body>  
+
+<%=form_for @clase , :url => {:action=>"create"} do |f| %>
+
+
+<div id="login-form4">
+
+<br/><br/>
+<h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">CREAR TIPO MALLA</font></b></h3>
+<fieldset style = "width: 200px; margin: 10px 50px 65px 400px;">
+
+
+
+<div align="center">
+  
+
+ <div onkeypress="return isNumberKey(event)">  
+<p>
+  <div align="center"><%=f.label "NOMBRE_TIPO_MALLA"%></div>
+  <div align="center"><%=f.text_field :tip_mall_descrip %></div>
+</p>
+ </div>
+
+<%=  f.submit "GUARDAR" %>
+
+    </fieldset>
+</div>
+<%end%>
+
+</div>
+</body>
+</html>

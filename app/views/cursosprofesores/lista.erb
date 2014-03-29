@@ -1,0 +1,19 @@
+
+
+<body>
+  <div id="pagina" style=" background-color: #E2F5FF; height: 506px; width: 1300px; border: 1px solid black;">          
+<H1><center><font color="#0932FF">VER NOMINA DE ESTUDIANTES QUE PERTENECE A CADA CURSO</font></center></H1>
+<br/>
+ 
+
+  <% @distributivo.each do |f| %>
+<table>
+  <tr><font color="#C50000">NIVEL:</font> <%= f.curso.nivel.nivel_numero %><br/>
+  <tr><font color="#C50000">TIPO DE NIVEL:</font> <%= f.curso.nivel.nivele.tip_niv_nombre %><br/></tr>
+  <tr><font color="#C50000">PARALELO:</font> <%= f.curso.cur_paralelo %><br/></tr>
+  <tr><font color="#C50000">ASIGNATURA:</font> <%= f.asignatura.asig_nombre %><br/></tr> 
+  <tr><%= link_to "VER NÓMINA DE ESTUDIANTES", alumnos_matriculados_lista_path(:distr_id => f.id), {:style => 'color: #0400FF'}%></tr>
+</table>
+<%end%>
+</div>
+</body>

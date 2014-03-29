@@ -1,0 +1,20 @@
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+<br/>   
+ <div id="login-form4"> 
+<br/>
+<center><p><h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">ASIGNATURAS ACADÉMICAS</font></b></h3></p></center>
+<table border="3" width="600" align="justify" cellspacing="5" background="/assets/imagesssss.jpg">  
+
+<% @asignatura.each do |f| %>
+<tr> 
+<td align="center"><font color ="#3300FF"><%="Asignatura" %></font>
+<td align="center"><%=f.asig_nombre %>
+<td align="center"><font color ="#3300FF"><%="Abreviatura" %></font>
+<td align="center"><%=f.asig_abreviat %>
+<td align="center"><%= link_to "EDITAR", edit_asignatura_path(f) %>     
+<td align="center"><%= link_to "ELIMINAR", f, :confirm => 'ESTA SEGURO??', :method => :delete %>  
+<%end%>
+  </table>
+  </div>
+</html>

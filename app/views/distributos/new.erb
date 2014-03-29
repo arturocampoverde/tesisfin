@@ -1,0 +1,266 @@
+<%#*<html>%>
+<%#*<head>%>    
+    <%#*<script type="text/javascript" src="src/jquery.tokeninput.js"></script>%>
+    <%#*<link rel="stylesheet" href="styles/token-input.css" type="text/css" />%>
+    <%#*<link rel="stylesheet" href="styles/token-input-facebook.css" type="text/css" />%>
+    <%#*<script type="text/javascript">%>
+    <%#*$(document).ready(function() {%>
+        <%#*$("input[type=button]").click(function () {%>
+            <%#*alert("Would submit: " + $(this).siblings("input[type=text]").val());%>
+        <%#*});%>
+    <%#*});%>
+    <%#*</script>%>
+<%#*</head>%>   
+<%#*<body>%>
+<%#*<h2 id="prevent-duplicates"></h2>%>
+    <%#*<div>%>
+        <%#*<input type="text" id="demo-input-prevent-duplicates" name="blah" />%>
+        <%#*<script type="text/javascript">%>
+        <%#*$(document).ready(function() {%>
+            <%#*$("#demo-input-prevent-duplicates").tokenInput([%>
+                
+      <%#*{id: 1, name: "Lun 07:00-07:45"},%> 
+      <%#*{id: 2, name: "Lun 07:45-08:30"},%> 
+      <%#*{id: 3, name: "Lun 08:30-09:15"},%> 
+      <%#*{id: 4, name: "Lun 09:15-10:00"},%> 
+      <%#*{id: 5, name: "Lun 10:30-11:15"},%> 
+      <%#*{id: 6, name: "Lun 11:15-12:00"},%> 
+      <%#*{id: 7, name: "Lun 12:00-12:45"},%> 
+      <%#*{id: 8, name: "Lun 12:45-13:30"},%>       
+      
+      <%#*{id: 9,  name: "Mar 07:00-07:45"},%> 
+      <%#*{id: 10, name: "Mar 07:45-08:30"},%> 
+      <%#*{id: 11, name: "Mar 08:30-09:15"},%> 
+      <%#*{id: 12, name: "Mar 09:15-10:00"},%> 
+      <%#*{id: 13, name: "Mar 10:30-11:15"},%> 
+      <%#*{id: 14, name: "Mar 11:15-12:00"},%> 
+      <%#*{id: 15, name: "Mar 12:00-12:45"},%> 
+      <%#*{id: 16, name: "Mar 12:45-13:30"},%>    
+      
+      <%#*{id: 17, name: "Mie 07:00-07:45"},%> 
+      <%#*{id: 18, name: "Mie 07:45-08:30"},%> 
+      <%#*{id: 19, name: "Mie 08:30-09:15"},%> 
+      <%#*{id: 20, name: "Mie 09:15-10:00"},%> 
+      <%#*{id: 21, name: "Mie 10:30-11:15"},%> 
+      <%#*{id: 22, name: "Mie 11:15-12:00"},%> 
+      <%#*{id: 23, name: "Mie 12:00-12:45"},%> 
+      <%#*{id: 24, name: "Mie 12:45-13:30"},%>          
+      
+      <%#*{id: 25, name: "Jue 07:00-07:45"},%> 
+      <%#*{id: 26, name: "Jue 07:45-08:30"},%> 
+      <%#*{id: 27, name: "Jue 08:30-09:15"},%> 
+      <%#*{id: 28, name: "Jue 09:15-10:00"},%> 
+      <%#*{id: 29, name: "Jue 10:30-11:15"},%> 
+      <%#*{id: 30, name: "Jue 11:15-12:00"},%> 
+      <%#*{id: 31, name: "Jue 12:00-12:45"},%> 
+      <%#*{id: 32, name: "Jue 12:45-13:30"},%>
+      
+      <%#*{id: 33, name: "Vie 07:00-07:45"},%> 
+      <%#*{id: 34, name: "Vie 07:45-08:30"},%> 
+      <%#*{id: 35, name: "Vie 08:30-09:15"},%> 
+      <%#*{id: 36, name: "Vie 09:15-10:00"},%> 
+      <%#*{id: 37, name: "Vie 10:30-11:15"},%> 
+      <%#*{id: 38, name: "Vie 11:15-12:00"},%> 
+      <%#*{id: 39, name: "Vie 12:00-12:45"},%> 
+      <%#*{id: 40, name: "Vie 12:45-13:30"},%>
+      
+      <%#*{id: 41, name: "Sab 07:00-07:45"},%> 
+      <%#*{id: 42, name: "Sab 07:45-08:30"},%> 
+      <%#*{id: 43, name: "Sab 08:30-09:15"},%> 
+      <%#*{id: 44, name: "Sab 09:15-10:00"},%> 
+      <%#*{id: 45, name: "Sab 10:30-11:15"},%> 
+      <%#*{id: 46, name: "Sab 11:15-12:00"},%> 
+      <%#*{id: 47, name: "Sab 12:00-12:45"},%> 
+      <%#*{id: 48, name: "Sab 12:45-13:30"},%>
+      
+      <%#*{id: 49, name: "Dom 07:00-07:45"},%> 
+      <%#*{id: 50, name: "Dom 07:45-08:30"},%> 
+      <%#*{id: 51, name: "Dom 08:30-09:15"},%> 
+      <%#*{id: 52, name: "Dom 09:15-10:00"},%> 
+      <%#*{id: 53, name: "Dom 10:30-11:15"},%> 
+      <%#*{id: 54, name: "Dom 11:15-12:00"},%> 
+      <%#*{id: 55, name: "Dom 12:00-12:45"},%> 
+      <%#*{id: 56, name: "Dom 12:45-13:30"},%>                             
+            <%#*],%>
+            <%#*{%>
+                <%#*preventDuplicates: true%>
+            <%#*});%>
+        <%#*});%>
+        <%#*</script>%>
+    <%#*</div>%>
+<%#*</body>%>
+
+
+
+<html>
+  <head>
+<script language="JavaScript" type="text/javascript" src="ajax.js"></script>  
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+    <script>
+      $(document).ready(function() {
+      $('#paralelos').hide();
+      $('#clase_select').change(function() {
+        $.ajax({
+        url: "<%= update_niveles_path%>",
+        data: {
+          clase_id : $('#clase_select').val()
+        },
+        dataType: "script"
+        });
+      });
+      
+      $('#nivel_select').change(function() {
+        $.ajax({
+        url: "<%= update_asignaturas_path%>",
+        data: {
+          nivel_id : $('#nivel_select').val()
+        },
+        dataType: "script"
+        });
+      });
+
+     
+
+        
+    });
+    </script>
+</head>
+
+
+<br/><br/>
+
+    <div align="center">    
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>D</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>I</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>S</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>T</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>R</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>I</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>B</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>U</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>T</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>I</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>V</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>O</b></span></font>
+    </div> 
+
+
+
+<br/>
+  
+  <div align="center"><font color="#3700FF"><h3>PERIODO LECTIVO</h3></font>
+    
+  <%# @periodo.each do |p|%>
+    <table width="416">
+      <tr>
+        <td><font color="#3700FF"><%= "Fecha de Inicio: " %></font><%= @periodo.period_fech_ini %><font color="#3700FF"><%= " Fecha de Fin: " %></font><%= @periodo.period_fech_fin %></td>
+      </tr>
+    </table>
+  <%#end%>
+  </div>
+  <br/>
+  <div id="login-form55">
+
+
+<body>  
+  
+  <%= form_for @distributo , :url => {:action=>"create"} do |d| %>
+  
+   
+<%#*<center><p><h3><b><font color="#3700FF">CREAR MALLAS CURRICULARES</font></b></h3></p></center>%>
+<fieldset style = "width: 400px; height:631px; margin: 1px 50px 65px 270px;">
+  
+  
+    <table>
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label  "Escoja Tipo de Malla" %></font></td>
+        <td align="center"><%= collection_select(nil, :clase_id, @clase, :id, :tip_mall_descrip, {:prompt => "Seleccione una Opcion"}, {:id => 'clase_select'}) %></td>
+      </tr>
+
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label "Escoja un nivel" %></font></td>
+        <td align="center"><%= collection_select(nil, :nivel_id, @niveles, :id, :nivel_numero, {:prompt => "Seleccione una Opcion"}, {:id => 'nivel_select'}) %></td>
+      </tr>
+
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label "Escoja un paralelo" %></font></td>
+        <td align="center">
+          <div id="paralelos" align="center">
+            Hola             
+          </div>
+          
+        </td>
+      </tr>
+ 
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label "Escoja Asignatura" %></font></td>
+        <td align="center"><%= d.collection_select(:asignatura_id, @asignaturas, :id, :asig_nombre, {:prompt => "Seleccione una Opcion"}, {:id => 'asignatura_select'}) %></td>
+      </tr>
+      
+      <tr>        
+      <td align="center"><font color="#3700FF"><%=d.label "Asignar Fecha Distributivo "%></font></td>
+      <td><%=d.text_field :distr_fecha %></td>
+      </tr>      
+    </table>
+
+  
+  <table width="100">  
+      <tr>        
+        <td align="center"><font color="#3700FF"><%=d.label "Horario Distributivo "%></font></td>
+        <td align="center"><%=d.label "A "%> <%= text_field_tag :distr_horarioa %></td>
+        <td align="center"><%=label_tag "B "%> <%= text_field_tag :distr_horariob %></td>
+      </tr>
+  </table>
+  <br>
+
+    <table class="pretty" width="800">
+      <tr>
+        <%#*<th><%= sortable "id", "Seleccion" %></th>
+        <th><%= sortable "pers_nombre", "Cedula" %></th>
+        <th><%= sortable "pers_nombre", "Nombre" %></th>
+        <th><%= sortable "pers_apellido", "Apellido" %></th>
+        <th><%= sortable "pers_email", "Email" %></th>
+        <th><%= sortable "", "Horario" %></th>
+        <th><%= "Materias" %></th>
+      </tr>
+      <% for usuario in @profesores %>
+        <tr>
+          <%#*<td align="center"><%= check_box_tag "profesor[]", usuario.id %></td>
+          <td align="center"><%= usuario.pers_cedula %> </td>
+          <td align="center"><%= usuario.pers_nombre %> </td>
+          <td align="center"><%= usuario.pers_apellido %> </td>
+          <%#*<td align="center"><%= usuario.pers_direccion %> </td>
+          <td align="center"><%= usuario.pers_email %></td>
+          <td align="center"><%= nil %></td>
+          <td align="center">
+            <div id="<%= "asignaturas_prof_"+"#{usuario.id}"%>">
+              
+            </div>        
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <br>
+
+    <center><%=  d.submit "GUARDAR DISTRIBUTIVO" %></center>
+    <%= link_to "Regresar al Menú Principal", asignaturas_menu_principal_admin_path %>
+      </div>
+    </fieldset>
+  <%end%>
+ 
+  <div id="login-form4">
+    <fieldset style = "width: 80px; height:210px; margin: -730px 50px 65px 800px;">
+   <%= form_tag distributos_new_path, :method => 'get' do %>
+      <%= hidden_field_tag :direction, params[:direction] %>
+      <%= hidden_field_tag :sort, params[:sort] %>
+      <div><p>
+        <center>Filtros por:
+          <p>Nombres<br> Apellidos<br> Cédula</p>
+<%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Búsqueda", :pers_nombre => nil %></center>
+      </p></div>
+    <% end %>
+      </fieldset>
+    </div>
+    </body>
+</html>

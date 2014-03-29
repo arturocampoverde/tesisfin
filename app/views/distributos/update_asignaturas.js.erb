@@ -1,0 +1,129 @@
+$(document).ready(function() {
+var parentElement = document.getElementsByClassName('asignaturas_nivel');
+while ( parentElement.firstChild ) parentElement.removeChild( parentElement.firstChild);
+
+$('.asignaturas_nivel').show();
+//$('#cartilla').html("<%#= j render(:partial => 'mensaje', :locals => {:f => @asignaturas})%>");
+<%@profesores.each do |prof|%>
+  $('#asignaturas_prof_'+'<%= prof.id%>').html("<%= escape_javascript(render :partial =>'asignaturas_nivel', :locals => {:prof_id => prof.id})%>");
+  $('#horario_a_'+'<%= prof.id%>').html("<%= escape_javascript(render :partial =>'horario_a', :locals => {:prof_id => prof.id})%>");
+  $('#horario_b_'+'<%= prof.id%>').html("<%= escape_javascript(render :partial =>'horario_b', :locals => {:prof_id => prof.id})%>");
+  //alert('<%= prof.id%>');
+<%end%>
+
+
+
+  
+            var obj_check_asigs = document.getElementsByClassName("check_asigs");
+            var obj_hidden_asignatura = document.getElementsByClassName("hidden_asignatura");
+            var obj_hidden_profesor = document.getElementsByClassName("hidden_profesor");
+            var obj_asignatura_nivel = document.getElementsByClassName("asignatura_nivel");
+
+        //alert(obj_check_asigs.length);
+
+        function alerta(id_check, id_asignatura, id_profesor){
+          $('#'+id_check).click(function(){
+            if($('#'+id_check).is(':checked')){
+                //alert(id_check);
+                //alert(id_asignatura);
+                //alert(id_profesor);
+                for (var i = 0; i < obj_check_asigs.length; i++){
+                  if(obj_hidden_asignatura[i].value == id_asignatura)
+                    {
+                      if (obj_hidden_profesor[i].value == id_profesor)
+                      { $("#"+obj_check_asigs[i].id).show();
+                        $("#"+obj_asignatura_nivel[i].id).show();
+                      }
+                      else
+                      { $("#"+obj_check_asigs[i].id).hide();
+                        $("#"+obj_asignatura_nivel[i].id).hide();
+                      }
+                    }
+                  else
+                  {
+                  //$("#"+obj_check_asigs[i].id).show();
+                  }
+                }
+
+
+
+
+
+
+
+
+
+            } else {
+                for (var i = 0; i < obj_check_asigs.length; i++){
+                  if(obj_hidden_asignatura[i].value == id_asignatura)
+                    {
+                      $("#"+obj_check_asigs[i].id).show();
+                      $("#"+obj_asignatura_nivel[i].id).show();
+                   /*   if (obj_hidden_profesor[i].value == id_profesor)
+                      { $("#"+obj_check_asigs[i].id).hide();
+                        $("#"+obj_asignatura_nivel[i].id).hide();
+                      }
+                      else
+                      { $("#"+obj_check_asigs[i].id).show();
+                        $("#"+obj_asignatura_nivel[i].id).show();
+                      }*/
+                    }
+                  else
+                  {
+                  //$("#"+obj_check_asigs[i].id).show();
+                  }
+                }
+
+
+
+
+
+
+
+
+
+            
+                //alert('No Escogido');
+            }
+          });
+        }
+
+        for (var i = 0; i < obj_check_asigs.length; i++){
+          //alert(obj_check_asigs[i].id);
+          //var actual = document.getElementById(obj_check_asigs[i].id);
+          alerta(obj_check_asigs[i].id, obj_hidden_asignatura[i].value, obj_hidden_profesor[i].value);
+        }
+
+
+
+
+//$('#asignatura_select').html("<%#= escape_javascript(options_for_select(@asignaturas)) %>");
+
+
+
+
+var parentElement = document.getElementById('paralelos');
+while ( parentElement.firstChild ) parentElement.removeChild( parentElement.firstChild );
+//var check_value = new Array()
+var i = 0
+<%@cursos.each do |c|%>
+  
+  var newCheckBox = document.createElement('input');
+  newCheckBox.type = 'checkbox';
+  newCheckBox.id = 'check_' + <%= c.id%>; // need unique Ids!
+  //newCheckBox.value = check_value[<%= c.id%>];
+  newCheckBox.name = 'cursos_ids[]';
+  newCheckBox.value = <%= c.id%>;
+
+  var newLabel = document.createElement('label');
+  newLabel.htmlFor = 'check_' + <%= c.id%>;
+  newLabel.appendChild(document.createTextNode('<%= c.cur_paralelo%>'));
+
+  parentElement.appendChild(newCheckBox);
+  parentElement.appendChild(newLabel);
+  
+<%end%>
+
+$('#paralelos').show();
+
+});

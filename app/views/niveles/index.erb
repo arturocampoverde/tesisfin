@@ -1,0 +1,21 @@
+
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link> 
+ <div id="login-form4"> 
+<br/><br/>
+<center><p><h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">NIVELES ACADÉMICOS</font></b></h3></p></center>
+
+<table border="3" width="300" align="justify" cellspacing="5" background="/assets/imagesssss.jpg"> 
+<% @nivel.each do |f| %>
+<tr>
+<td align="center"><%=f.nivel_numero %> 
+<td align="center"><%=f.nivel_descrip %>
+<td align="center"><%=f.nivele.tip_niv_nombre %>
+
+<td align="center"><%= link_to "EDITAR", edit_nivele_path(f) %>    
+<td align="center"><%= link_to "ELIMINAR", f, :confirm => 'ESTA SEGURO??', :method => :delete %>
+<%end%>
+</table>
+
+ </div>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+<body>
+<br/>
+
+
+  <div id="login-form4">
+    <table border="3" width="1100" align="center" cellspacing="5" background="/assets/imagesssss.jpg">
+     <center><p><h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">CURSOS ACADÉMICOS</font></b></h3></p></center>
+<% @cursos.each do |f| %>
+
+<tr>
+<td width="80"><font color ="#3300FF">  NIVEl   --> </font> <%=f.nivel.nivel_numero%> </td>
+<td width="130"><font color ="#3300FF">  PARALELO--> </font> <%=f.cur_paralelo%> </td>
+<td width="190"><font color ="#3300FF">  SECCION --> </font> <%=f.seccion.secc_nombre%></td>
+<td><font color ="#AA1D1D">  PERIODO LECTIVO INICIO --> </font> <%=f.periodo.period_fech_ini%><font color ="#AA1D1D">  PERIODO LECTIVO FIN --> </font> <%=f.periodo.period_fech_fin%></td>
+<td><font color ="#3300FF">  <%= link_to "EDITAR", edit_paralelo_path(f)%> </font> </td>
+<td><%= link_to "ELIMINAR", f, :confirm => 'ESTA SEGURO??', :method => :delete %>
+ 
+  <%end%>
+  </table>
+</div>
+
+     
+</body>
+</html>

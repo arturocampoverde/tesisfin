@@ -1,0 +1,40 @@
+<html>
+<head>  
+<script language="JavaScript" type="text/javascript" src="ajax.js"></script> 
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+</head>
+<body>  
+
+  
+<%=form_for @nivele , :url => {:action=>"create"} do |f| %>
+
+
+
+<div id="login-form4">
+
+<br/><br/>
+<h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">CREAR TIPO DE NIVELES ACADÉMICOS</font></b></h3>
+<fieldset style = "width: 200px; margin: 10px 50px 65px 400px;">
+
+
+
+<div align="center">
+
+
+
+<div onkeypress="return isNumberKey(event)">   
+<p>
+  <div align="center"><%=f.label "TIPO_NIVEL"%></div>
+  <div align="center"><%=f.text_field :tip_niv_nombre %></div>
+</p>
+</div>
+
+<div align="center"><%=  f.submit "GUARDAR" %></div>
+  </fieldset>
+</div>
+
+<%end%>
+
+</div>
+</body>
+</html>

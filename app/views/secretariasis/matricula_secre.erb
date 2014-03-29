@@ -1,0 +1,14 @@
+<center><font color="#2100F7"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    SELECCIONE CURSO A MATRICULAR:
+    </font>
+<%= form_tag matr_alum_path, :method => 'get' do%>
+<%@cursos_last.each do |cl|%>
+  <%= radio_button_tag :curso_id, cl.id %>
+  <%= cl.nivel.nivel_numero %>
+  <%= cl.nivel.nivele.tip_niv_nombre %>
+  <%= cl.cur_paralelo %><br/>
+<%end%>
+<%= hidden_field_tag :persona_id, @persona.id %>
+<%= submit_tag "Guardar"%>
+<%end%>

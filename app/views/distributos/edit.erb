@@ -1,0 +1,140 @@
+<html>
+  <head>
+     <script language="JavaScript" type="text/javascript" src="ajax.js"></script> 
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+    <script>
+      $(document).ready(function() {
+      $('#clase_select').change(function() {
+        $.ajax({
+        url: "<%= update_niveles_path %>",
+        data: {
+          clase_id : $('#clase_select').val()
+        },
+        dataType: "script"
+        });
+      });
+
+      $('#nivel_select').change(function() {
+        $.ajax({
+        url: "<%= update_asignaturas_path %>",
+        data: {
+          nivel_id : $('#nivel_select').val()
+        },
+        dataType: "script"
+        });
+      });
+    });
+    </script>
+</head>
+      <div id="login-form4">
+        
+        
+        
+ <body>
+  <%= form_for @distributos do |d| %>
+        
+        <fieldset style = "width: 820px; height:710px; margin: 1px 50px 65px 170px;">
+          <h3 style = "width: 200px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">PERIODO LECTIVO</font></b></h3>
+          
+            <table align="center" width="500">
+        <td align="center"><%= "Fecha de Inicio: " %><%= @periodo.period_fech_ini %><%= " Fecha de Fin: " %><%= @periodo.period_fech_fin %></td>
+    </table>
+          <p>
+    <table>
+      <tr>
+        <td align="center"><%= d.label  "Escoja" %></td>
+        <td align="center"><%= select_tag :clase_id, options_from_collection_for_select(@clase, "id", "tip_mall_descrip", @clase_actual.id), :prompt => "Seleccione una Opcion", :id => 'clase_select', :disabled => true%></td>
+      </tr>
+      <tr>
+        <td align="center"><%= d.label "Escoja un nivel" %></td>
+        <td align="center"><%= select_tag :nivel_id, options_from_collection_for_select(@niveles, "id", "nivel_numero", @nivel_actual.id), :prompt => "Seleccione una Opcion", :id => 'nivel_select', :disabled => true%></td>
+      </tr>
+      <tr>
+        <td align="center"><%= d.label "Escoja un paralelo" %></td>
+        <td align="center">
+          <%#= check_box_tag :paralelo, @distributos.curso_id, :checked => true%><%#=@distributos.curso.cur_paralelo  , :disabled => ''%>
+          <%= check_box_tag(:paralelo, @distributos.curso_id, checked = true, options = {:disabled => true})%><%=  @distributos.curso.cur_paralelo%>
+        </td>
+      </tr>
+      <tr>
+        <td align="center"><%= d.label "Escoja Asignatura" %></td>
+        <td align="center"><%= d.collection_select(:asignatura_id, @asignaturas, :id, :asig_nombre, {:prompt => "Seleccione una Opcion"}, {:id => 'asignatura_select'}) %></td>
+      </tr>
+      
+      
+      <tr>
+      <td align="center"> <%=d.label "Asignar Fecha Distributivo "%></td>
+      <td align="center"><%=d.text_field :distr_fecha %></td>
+      </tr>
+      
+      
+      <tr>        
+      <td align="center"> <%=d.label "Horario Distributivo "%></td>
+      <td align="center"><%=d.label @distributos.curso.cur_paralelo%> <%=d.text_field :distr_horarioa %></td>
+      <%#*<td><%=d.label "B "%>
+       <%#=d.text_field :distr_horariob %></td>
+      </tr>
+    </table>
+  
+
+
+
+    <table class="pretty" width="1000">
+      <tr>
+        <th><%= sortable "id", "Seleccion" %></th>
+        <th><%= sortable "pers_nombre", "Cedula" %></th>
+        <th><%= sortable "pers_nombre", "Nombre" %></th>
+        <th><%= sortable "pers_apellido", "Apellido" %></th>
+        <th><%= sortable "pers_direccion", "Direccion" %></th>
+        <th><%= sortable "pers_email", "Email" %></th>
+      </tr>
+      <% for usuario in @profesores %>
+        <tr>
+          <%if usuario.id == @distributos.persona_id%>
+            <td align="center"><%= radio_button_tag :profesor, usuario.id, :checked => true %></td>
+          <%else%>
+            <td align="center"><%= radio_button_tag :profesor, usuario.id %></td>
+          <%end%>
+          <td align="center"><%= usuario.pers_cedula %> </td>
+          <td align="center"><%= usuario.pers_nombre %> </td>
+          <td align="center"><%= usuario.pers_apellido %> </td>
+          <td align="center"><%= usuario.pers_direccion %> </td>
+          <td align="center"><%= usuario.pers_email %></td>
+        </tr>
+      <% end %>
+    </table>          
+          <br/>                                      
+          
+          
+          <%=  d.submit "GUARDAR" %>
+          <%= link_to "Regresar al Menú Principal", asignaturas_menu_principal_admin_path %>
+              <br/><br/><br/><br/>
+              
+              
+
+    </fieldset>
+        </div>
+  <%end%>
+
+
+
+
+              <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+              
+              
+              
+              
+         <%= form_tag distributos_new_path, :method => 'get' do %>
+      <%= hidden_field_tag :direction, params[:direction] %>
+      <%= hidden_field_tag :sort, params[:sort] %>
+      <div align="center"><p>
+        <center>Filtros por:
+          <p>Nombres<br> Apellidos<br> Cédula</p>
+         <%= text_field_tag :search, params[:search] %>
+         <%= submit_tag "Búsqueda", :pers_nombre => nil %></center>
+      </div>
+    <% end %>
+
+
+</body>                                   
+</html>

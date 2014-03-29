@@ -1,0 +1,25 @@
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+<br/><br/><br/>
+
+<br/><br/>
+<div align="center">
+  
+<%=form_for @niveles do |f| %>
+  <div id="login-form4">
+    <h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">EDITE TIPO DE NIVEL ACADÉMICO</font></b></h3>
+<fieldset style = "width: 200px; margin: 10px 50px 65px 400px;">
+  
+<p>
+ <div align="center"> <%=f.label "TIPO_NIVEL"%></div>
+ <div align="center"> <%=f.text_field :tip_niv_nombre %></div>
+</p>
+
+<%=  f.submit "GUARDAR" %>
+  </fieldset>
+</div>
+<%end%>
+
+</div>
+</body>
+</html>

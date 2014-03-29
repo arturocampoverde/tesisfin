@@ -1,0 +1,10 @@
+<script>
+
+</script>
+<%@asignaturas.each do |a|%>
+  <%= hidden_field_tag("dist_materias[]", a.id, :id=>"hidden_asignatura_"+"#{a.id}"+"_"+"#{prof_id}",:class=>"hidden_asignatura")%>
+  <%= hidden_field_tag("dist_profesores[]", prof_id, :id=>"hidden_profesor_id_"+"#{a.id}"+"_"+"#{prof_id}",:class=>"hidden_profesor")%>
+  <%#= label_tag nil,"#{a.id}_"+"#{prof_id}"%>  
+  <%= check_box_tag "asignatu[]", a.id, false, id:"asignatu_"+"#{a.id}"+"_"+"#{prof_id}", class: 'check_asigs'%><%= label_tag nil, a.asig_nombre, :id=>"asignatura_"+"#{a.id}"+"_"+"#{prof_id}", :class=>"asignatura_nivel"%><br/>
+<%end%>
+  

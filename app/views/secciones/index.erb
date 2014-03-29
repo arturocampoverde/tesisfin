@@ -1,0 +1,18 @@
+<br/><br/>
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+ <div id="login-form4"> 
+
+<center><p><h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">SECCIONES ACADÉMICAS</font></b></h3></p></center>
+
+<table border="3" width="300" align="justify" cellspacing="5" background="/assets/imagesssss.jpg"> 
+<% @seccion.each do |a| %>
+<tr> 
+<td align="center"><%=a.secc_nombre%>
+<%#*<td align="center"><%=a.secc_estado%>
+<td align="center"><%= link_to "EDITAR", edit_seccione_path(a)%> 
+<td align="center"><%= link_to "ELIMINAR", a, :confirm => 'ESTA SEGURO??', :method => :delete %>
+<%end%>
+</table>
+</div>
+</html>

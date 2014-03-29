@@ -1,0 +1,36 @@
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+<br/><br/><br/>
+
+<br/><br/>
+<div align="center">
+<%=form_for @periodos do |f| %>
+   <div id="login-form4">
+   <h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">EDITE PERIODO LECTIVO</font></b></h3>
+<fieldset style = "width: 200px; margin: 10px 50px 65px 400px;">
+<p>
+  <div align="center"><%=f.label "FECHA DE INICIO"%></div>
+  <div align="center"><%=f.text_field :period_fech_ini %></div>
+</p>
+
+
+<p>
+  <div align="center"><%=f.label "FECHA DE FINALIZACIÓN"%></div>
+  <div align="center"><%=f.text_field :period_fech_fin %></div>
+</p>
+
+
+<%#*<p>%>
+  <%#=f.label "ESTADO PERIODO LECTIVO"%>
+  <%#=f.text_field :period_estad_lect %>
+<%#*</p>%>
+
+
+<%=  f.submit "GUARDAR" %>
+  </fieldset>
+</div>
+<%end%>
+
+</div>
+</body>
+</html>

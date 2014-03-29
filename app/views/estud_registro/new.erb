@@ -1,0 +1,144 @@
+<html>
+    <link rel="stylesheet" href="/assets/stylee.css"></link>
+  <head>
+    <script language="JavaScript">/*Esta es una funcion para verificar la cedula en el checkbox de lapagina*/
+      function check_cedula( form )
+      {      
+      
+      
+      var cedula = $('.pers_ced').val();/*ayuda con respecto a cadenas(string) crear arrays de cadenas en base aun elemento indicador del Split como cedula*/
+      //alert(cedula);
+      array = cedula.split( "" );/*ayuda a medir el numero de caracteres de un array*/num = array.length;/*Aqui comprobamos que el numero ingresado tiene que tener diezcaracteres para ingresar a la condición sino no ingresa para verificar*/
+      if ( num == 10 ){total = 0;digito = (array[9]*1);for( i=0; i < (num-1); i++ ){mult = 0;if ( ( i%2 ) != 0 ) {total = total + ( array[i] * 1 );}
+      else{mult = array[i] * 2;
+        if ( mult > 9 )total = total + ( mult - 9 );else
+          total = total + mult;}
+      }decena = total / 10;decena = Math.floor( decena );decena = ( decena + 1 ) * 10;finala = ( decena - total );if ( ( finala == 10 && digito == 0 ) || ( finala == digito ) ) {alert( "La cedula es correcta" );
+        return true;}else{alert( "el digito autoverificador de su cedula es incorrecto debe ser…"+finala);
+        return false;}}else{alert("La cedula no puede tener menos de 10 digitos y tampoco mas de 10 digitos");return false;}
+      }</script>
+    </head>
+    
+    
+    
+  <body> 
+ <script language=Javascript>
+     function isNumberKey(evt) //SOLO LETRAS
+     {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57) || charCode ==8)
+        return true
+        return false;
+     }
+  </script>
+    
+ <body id="registropapa">   
+
+    
+<script type="text/javascript"> //SOLO NUMEROS
+  function ValidNum(e) {
+    var tecla= document.all ? tecla = e.keyCode : tecla = e.which;
+    return ((tecla > 47 && tecla < 58) || tecla == 46 || tecla ==8);
+}
+</script>
+<div id="login-form">
+<%= form_for @user, :url => {:action=>"create"} do |f|%>
+  <fieldset>
+  <h3>DATOS DE USUARIO</h3>
+  <!--<fieldset>-->
+    <%= f.text_field :username, :placeholder=>"Usuario" %><font color="#E20000" size="2"><%= @user.errors[:username] if @user.errors.any? %></font>
+    <%= f.text_field :email, :placeholder=>"Email" %><font color="#E20000" size="2"><%= @user.errors[:email] if @user.errors.any? %></font>
+    <%= f.password_field :password, :placeholder=>"Contraseña"  %><font color="#E20000" size="2"><%= @user.errors[:password] if @user.errors.any? %></font>
+
+    <%if @estudiante != "true"%>
+      <%= f.hidden_field :usu_estado, :value=>"A"%>
+    <%else%>
+      <%= f.hidden_field :usu_estado, :value=>"I"%>
+    <%end%>
+
+    <%= f.password_field :password_confirmation, :placeholder=>"Confirme Contraseña"%>
+
+    <%if @estudiante == "true"%>
+      <%= hidden_field_tag(:estudiante, value = "true")%>
+    <%end%>
+  <!--</fieldset>-->
+
+  <h3>DATOS PERSONALES</h3>
+  <!--<fieldset>-->
+  <%= fields_for :persona do |f| %>
+    <%= form_for @person, :url => {:action=>"create"} do |f|%>
+      <% if @person.errors.any? %>
+        <div class="error_messages">
+          <div align="left">                  
+            <% for message in @person.errors.full_messages %>
+              <font color="#E20000"><%= message %></font>
+            <% end %>
+          </div>
+        </div>      
+      <% end %>
+      <div onkeypress="return ValidNum(event)">    
+        <form method="post">
+          Cédula:<%= f.text_field :pers_cedula, :class=>"pers_ced"%><%= @person.errors.full_messages.first if @person.errors.any? %></font>
+          <input name="send" type="button" value="Comprobar Cédula" onClick="return check_cedula(this.form);" />
+        </form>
+      </div>
+      <div onkeypress="return isNumberKey(event)">  
+        Nombres:<%= f.text_field :pers_nombre%>
+      </div>
+      <div onkeypress="return isNumberKey(event)">  
+        Apellidos:<%= f.text_field :pers_apellido%>
+      </div>
+      Dirección:<%= f.text_field :pers_direccion%>
+      <div onkeypress="return ValidNum(event)">
+        Teléfono Convencional:<%= f.text_field :pers_telefono1%>
+        Teléfono Celular:<%= f.text_field :pers_telefono2%>
+      </div>
+    <%end%> <!-- -------------------------------------- FIN DEL FORM FOR @person-->
+
+    <%if @estudiante != "true"%>
+      <legend>TIPO DE PERSONA</legend>
+      <%= fields_for :tipo do |f| %>          
+        <div onkeypress="return isNumberKey(event)">  
+          <%= f.text_field :tip_descrip%>
+        </div>
+      <%end%>   
+    <%else%>
+      <%= fields_for :tipo do |f| %>
+        <div onkeypress="return isNumberKey(event)">
+          <%= f.hidden_field :tip_descrip, :value=>"ALUMNO"%>
+        </div>
+      <%end%>
+    <%end%>    
+  <!--</fieldset>-->
+  <h3>REPRESENTANTE</h3>
+  <!--<fieldset>-->
+  <%= fields_for :repre do |f| %>
+    Cédula:<%= f.text_field :pers_cedula%>
+    <div onkeypress="return isNumberKey(event)">
+     Nombres: <%= f.text_field :pers_nombre%>
+    </div>
+    <div onkeypress="return isNumberKey(event)"> 
+     Apellidos: <%= f.text_field :pers_apellido%>
+    </div>
+    Dirección:<%= f.text_field :pers_direccion%>
+    <div onkeypress="return ValidNum(event)">
+      Teléfono Convencional:<%= f.text_field :pers_telefono1%>
+    </div>
+    <div onkeypress="return ValidNum(event)">
+      Teléfono Celular:<%= f.text_field :pers_telefono2%>
+    </div>
+  <%end%>
+  <%= fields_for :representante do |f| %> 
+    <div onkeypress="return isNumberKey(event)">
+      Parentezco:<%= f.text_field :repre_parentesco%>
+    </div>
+  <%end%>
+<%end%> <!-- -------------------------------------- FIN DEL FIELDS FOR :persona-->
+<%= f.submit "REGISTRAR" %>
+<%= link_to "Regresar al Menú Principal", root_path %>
+</fieldset>
+<% end %>
+</div>
+</body>
+</body>
+</html>
